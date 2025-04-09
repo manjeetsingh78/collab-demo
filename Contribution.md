@@ -1,12 +1,12 @@
-## 🧠 Task E: Reflection & Verification
+##  Task E: Reflection & Verification
 
-### 1️⃣ Workflow Summary
+### Workflow Summary
 
 This collaboration simulation involved using two GitHub accounts:  
 - **Account A**: `manjeetsingh78` (original repository owner)  
 - **Account B**: `Manjeet9058` (collaborator via fork and pull request)
 
-#### 🔧 Steps Taken:
+#### Steps Taken:
 1. **Repository Creation**:  
    Created a repository named `collab-demo` under `manjeetsingh78`.
 
@@ -28,7 +28,7 @@ This collaboration simulation involved using two GitHub accounts:
 7. **Review & Merge**:  
    Switched to `manjeetsingh78`, reviewed the pull request, approved it, and merged it into `main`.
 
-#### ⚠️ Challenges & Solutions:
+####  Challenges & Solutions:
 - **Challenge**: SSH key conflicts when switching between accounts on the same machine.  
   **Solution**: Used HTTPS for one account and SSH for the other, and configured Git to use account-specific credentials using `.gitconfig`.
 
@@ -37,27 +37,16 @@ This collaboration simulation involved using two GitHub accounts:
 
 ---
 
-### 2️⃣ Verification
+### Verification
 
-#### ✅ Original Repository (`manjeetsingh78`)
+####  Original Repository (`manjeetsingh78`)
 - Repository link: [https://github.com/manjeetsingh78/collab-demo](https://github.com/manjeetsingh78/collab-demo)
 - Main branch contains merged PR with updated files.
 
-#### ✅ Forked Repository (`Manjeet9058`)
+####  Forked Repository (`Manjeet9058`)
 - Fork link: [https://github.com/Manjeet9058/collab-demo](https://github.com/Manjeet9058/collab-demo)
 - New branch: `feature-update`
 
-#### ✅ Pull Request & Merge
+#### Pull Request & Merge
 - Pull Request: [View Pull Request](https://github.com/manjeetsingh78/collab-demo/pull/1)  
   *(Replace with actual PR link if different)*
-
-#### 📸 Screenshots (if required):
-Include screenshots in the `screenshots/` folder showing:
-- The original repo and its commits
-- The forked repo
-- Branch creation and commit history
-- The pull request and approval/merge
-
----
-
-This concludes the reflection and verification for Task E. ✔️
