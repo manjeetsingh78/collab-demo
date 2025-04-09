@@ -1,2 +1,2 @@
-# collab-demo
-Assignment-2
+# Collaboration Demo
+This repository demonstrates GitHub collaboration using forks, branches, and pull requests.
