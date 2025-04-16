@@ -2,59 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login & Signup Page</title>
   <style>
     * {
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     body {
-      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      margin: 0;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
     }
 
-    .login-container {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      width: 300px;
+    .container {
+      background: #fff;
+      width: 350px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      overflow: hidden;
+      transition: 0.5s ease;
     }
 
-    .login-container h2 {
+    .form-container {
+      display: flex;
+      width: 700px;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .form-box {
+      width: 350px;
+      padding: 40px 30px;
+      transition: all 0.3s ease;
+    }
+
+    h2 {
       text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       color: #333;
     }
 
-    .login-container input[type="text"],
-    .login-container input[type="password"] {
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
       width: 100%;
-      padding: 10px;
-      margin: 8px 0 16px 0;
+      padding: 12px;
+      margin: 8px 0 16px;
       border: 1px solid #ccc;
       border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
     }
 
-    .login-container button {
+    input:focus {
+      border-color: #667eea;
+    }
+
+    button {
       width: 100%;
-      padding: 10px;
-      background-color: #4CAF50;
+      padding: 12px;
+      background-color: #667eea;
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
       cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
     }
 
-    .login-container button:hover {
-      background-color: #45a049;
+    button:hover {
+      background-color: #5a67d8;
+    }
+
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: #667eea;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 15px;
+      display: block;
+      text-align: center;
     }
 
     .error {
@@ -63,34 +95,87 @@
       text-align: center;
       margin-top: 10px;
     }
+
+    @media (max-width: 400px) {
+      .container, .form-box {
+        width: 90%;
+      }
+      .form-container {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Login</h2>
-    <form id="loginForm">
-      <input type="text" id="username" placeholder="Username" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-      <div class="error" id="errorMsg"></div>
-    </form>
+  <div class="container">
+    <div class="form-container" id="formContainer">
+      <!-- Login Form -->
+      <div class="form-box" id="loginBox">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <input type="text" id="loginUsername" placeholder="Username" required />
+          <input type="password" id="loginPassword" placeholder="Password" required />
+          <button type="submit">Login</button>
+          <button type="button" class="toggle-btn" onclick="showSignup()">Don't have an account? Sign up</button>
+          <div class="error" id="loginError"></div>
+        </form>
+      </div>
+
+      <!-- Signup Form -->
+      <div class="form-box" id="signupBox">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+          <input type="text" id="signupUsername" placeholder="Username" required />
+          <input type="email" id="signupEmail" placeholder="Email" required />
+          <input type="password" id="signupPassword" placeholder="Password" required />
+          <button type="submit">Sign Up</button>
+          <button type="button" class="toggle-btn" onclick="showLogin()">Already have an account? Login</button>
+          <div class="error" id="signupError"></div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <script>
-    const loginForm = document.getElementById("loginForm");
-    const errorMsg = document.getElementById("errorMsg");
+    const formContainer = document.getElementById("formContainer");
 
-    loginForm.addEventListener("submit", function (e) {
+    function showSignup() {
+      formContainer.style.transform = "translateX(-50%)";
+    }
+
+    function showLogin() {
+      formContainer.style.transform = "translateX(0%)";
+    }
+
+    // Dummy login logic
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+      const username = document.getElementById("loginUsername").value;
+      const password = document.getElementById("loginPassword").value;
+      const loginError = document.getElementById("loginError");
 
-      // Dummy credentials for testing
       if (username === "admin" && password === "1234") {
         alert("Login successful!");
-        errorMsg.textContent = "";
+        loginError.textContent = "";
       } else {
-        errorMsg.textContent = "Invalid username or password";
+        loginError.textContent = "Invalid username or password";
+      }
+    });
+
+    // Dummy signup logic
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const username = document.getElementById("signupUsername").value;
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+      const signupError = document.getElementById("signupError");
+
+      if (username && email && password.length >= 4) {
+        alert("Signup successful!");
+        signupError.textContent = "";
+        showLogin();
+      } else {
+        signupError.textContent = "Please fill all fields correctly";
       }
     });
   </script>
